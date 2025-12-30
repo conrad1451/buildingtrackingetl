@@ -1,0 +1,31 @@
+# CHQ: ChatGPT created file
+
+name: GCP Auth Smoke Test
+
+on:
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  test-auth:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: "projects/462270264652/locations/global/workloadIdentityPools/github-pool/providers/github"
+          service_account: "github-etl@rugged-sentry-466306-h8.iam.gserviceaccount.com"
+
+      - name: Verify identity
+        run: |
+          gcloud auth list
+
+      - name: Verify GCS access
+        run: |
+          gcloud storage ls gs://test-receipt-building-data

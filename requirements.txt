@@ -1,0 +1,29 @@
+# Cloud
+# google-cloud-storage>=2.14.0,<3.0.0
+azure-storage-blob>=12.19.0,<13.0.0
+
+
+# Web / runtime (if API also deployed)
+Flask==2.3.3
+Flask-Cors==3.0.10
+gunicorn==23.0.0
+
+# ETL / Data
+pandas>=2.0.0
+requests
+python-dateutil
+tenacity
+
+# Database (optional)
+psycopg2-binary
+
+# Database (optional)
+psycopg2-binary==2.9.9
+sqlalchemy
+
+# Utilities
+python-dotenv==1.0.1
+Pillow
+
+# Security
+urllib3>=2.6.0
